@@ -1,0 +1,15 @@
+version: '3.8'
+services:
+  ai_server:
+    image: guhyun9454/microservice_programming:ai_server
+    ports:
+      - "9454:9454"
+
+  frontend:
+    image: guhyun9454/msp_term2_frontend:v2
+    ports:
+      - "8501:8501"
+    depends_on:
+      - ai_server
+
+  
