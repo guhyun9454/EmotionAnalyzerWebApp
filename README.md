@@ -2,6 +2,7 @@
 
 ## Preview
 
+![Example Image](images/preview.png)
 
 ## Getting Started
 
