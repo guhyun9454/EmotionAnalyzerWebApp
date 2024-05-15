@@ -1,6 +1,6 @@
-Flask
+Flask == 3.0.3
 numpy
 opencv-python
 Pillow
 mediapipe
-tensorflow
+tensorflow == 2.15
