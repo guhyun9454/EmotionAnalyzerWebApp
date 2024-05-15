@@ -4,15 +4,16 @@ from PIL import Image
 from io import BytesIO
 import numpy as np
 
-st.title('이미지 처리 서버')
-st.write('업로드할 이미지를 선택해 주세요.')
+st.title("Emotion Analyzer")
+st.write("You can test with test image provided")
 
-uploaded_file = st.file_uploader("사진을 선택해 주세요...", type=["jpg", "jpeg", "png"])
+uploaded_file = st.file_uploader("Select image...", type=["jpg", "jpeg", "png"])
+col1, col2 = st.columns(2)
+
 if uploaded_file is not None:
     image = Image.open(uploaded_file)
-    st.image(image, caption='Uploaded Image', use_column_width=True)
-    st.write("")
-    st.write("Processing...")
+    with col1:
+        st.image(image, caption='Uploaded Image', use_column_width=True)
 
     url = 'http://ai_server:9454/predict'
 
@@ -21,6 +22,7 @@ if uploaded_file is not None:
 
     if response.status_code == 200:
         processed_image = Image.open(BytesIO(response.content))
-        st.image(processed_image, caption='Processed Image', use_column_width=True)
+        with col2:
+            st.image(processed_image, caption='Processed Image', use_column_width=True)
     else:
         st.error("Error with processing image. Server responded with: " + response.text)

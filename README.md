@@ -41,9 +41,13 @@ Follow these steps to run the project locally:
    
    ***Accuracy may be poor for faces that do not look forward.***
 
-5. **Stopping the Application**
+5. **Stop the application**
 
    To stop and remove all stuffs created by `docker compose up`, run the following command in the terminal:
    ```Shell
    docker compose down  
    ```
+
+## Architecture
+
+![Example Image](images/architecture.jpeg)

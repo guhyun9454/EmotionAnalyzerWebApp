@@ -3,4 +3,4 @@ numpy
 opencv-python
 Pillow
 mediapipe
-Keras == 2.13.1
+tensorflow
