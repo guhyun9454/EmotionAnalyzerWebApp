@@ -3,6 +3,8 @@
 ## Preview
 
 ![Example Image](images/preview.png)
+![Example Image](images/preview2.png)
+
 
 ## Getting Started
 
