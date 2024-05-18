@@ -54,3 +54,11 @@ Follow these steps to run the project locally:
 ## Architecture
 
 ![Example Image](images/architecture.jpeg)
+
+The system uses a microservice architecture orchestrated by Docker Compose.
+
+## AI Model Details
+- The emotion classification model is based on a CNN architecture optimized for detecting subtle facial features and expressions.
+- The model was trained from the scratch on a dataset specifically designed for Korean facial features to ensure higher accuracy in the target demographic. You can find the dataset [here](https://www.aihub.or.kr/aihubdata/data/view.do?currMenu=115&topMenu=100&aihubDataSe=data&dataSetSn=83).
+
+This repository deploys the previously trained model as a web application. The training process involved testing multiple models and fine-tuning the architecture for optimal performance. The data was preprocessed and analyzed to ensure high-quality inputs for training. For detailed information on the model training process and to view the full report, please visit the [training report repository](https://github.com/guhyun9454/VisionAssistEmotionAI).
