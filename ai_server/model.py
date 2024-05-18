@@ -4,9 +4,9 @@ import numpy as np
 from keras.models import load_model
 from PIL import Image, ImageDraw, ImageFont
 
-model_path = "src/v2_final.hdf5"
+model_path = "utils/v2_final.hdf5"
 model = load_model(model_path)
-font_path = "src/NanumGothic.ttf"
+font_path = "utils/NanumGothic.ttf"
 emotions_korean = ["분노", "슬픔", "당황", "기쁨", "중립"]
 mp_face_detection = mp.solutions.face_detection
 face_detection = mp_face_detection.FaceDetection(min_detection_confidence=0.3)

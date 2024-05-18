@@ -27,7 +27,6 @@ jobs:
   build-and-push-frontend:
     name: Build and Push Frontend Docker Image
     runs-on: ubuntu-latest
-    needs: build-and-push-ai-server  # AI 서버 이미지 빌드 및 푸시 후 실행
 
     steps:
     - name: Checkout repository
