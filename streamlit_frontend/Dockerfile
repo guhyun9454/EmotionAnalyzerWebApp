@@ -2,7 +2,7 @@ FROM python:3.11.4
 
 WORKDIR /app
 
-COPY . .
+COPY requirements.txt .
 
 RUN apt-get update && apt-get install -y \
     build-essential \
@@ -13,6 +13,7 @@ RUN apt-get update && apt-get install -y \
 
 RUN pip install -r requirements.txt
 
+COPY . .
 
 EXPOSE 8501
 

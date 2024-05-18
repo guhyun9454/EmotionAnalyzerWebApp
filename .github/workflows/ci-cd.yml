@@ -1,0 +1,43 @@
+name: CI/CD Pipeline
+run-name: ${{ github.actor }} is testing out GitHub Actions 🚀
+
+on:
+  push:
+    branches:
+      - main  # main 브랜치에 푸시될 때 트리거
+
+jobs:
+  build-and-push-ai-server:
+    name: Build and Push AI Server Docker Image
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v2
+
+    - name: Log in to Docker Hub
+      run: echo "${{ secrets.DOCKER_HUB_ACCESS_TOKEN }}" | docker login -u "${{ secrets.DOCKER_HUB_USERNAME }}" --password-stdin
+
+    - name: Build Docker image for AI Server
+      run: docker build -t ${{ secrets.DOCKER_HUB_USERNAME }}/microservice_programming:latest ./ai_server
+
+    - name: Push Docker image for AI Server
+      run: docker push ${{ secrets.DOCKER_HUB_USERNAME }}/microservice_programming:latest
+
+  build-and-push-frontend:
+    name: Build and Push Frontend Docker Image
+    runs-on: ubuntu-latest
+    needs: build-and-push-ai-server  # AI 서버 이미지 빌드 및 푸시 후 실행
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v2
+
+    - name: Log in to Docker Hub
+      run: echo "${{ secrets.DOCKER_HUB_ACCESS_TOKEN }}" | docker login -u "${{ secrets.DOCKER_HUB_USERNAME }}" --password-stdin
+
+    - name: Build Docker image for Frontend
+      run: docker build -t ${{ secrets.DOCKER_HUB_USERNAME }}/msp_term2_frontend:latest ./streamlit_frontend
+
+    - name: Push Docker image for Frontend
+      run: docker push ${{ secrets.DOCKER_HUB_USERNAME }}/msp_term2_frontend:latest

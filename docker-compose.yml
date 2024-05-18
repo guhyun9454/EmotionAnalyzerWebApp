@@ -1,16 +1,16 @@
 version: '3.8'
 services:
   ai_server:
-    build: ./ai_server
-    # image: guhyun9454/microservice_programming:ai_server
+    # build: ./ai_server
+    image: guhyun9454/microservice_programming:latest
     ports:
       - "9454"
     networks:
       - ai_network
 
   frontend:
-    build: ./streamlit_frontend
-    # image: guhyun9454/msp_term2_frontend:v2
+    # build: ./streamlit_frontend
+    image: guhyun9454/msp_term2_frontend:latest
     ports:
       - "8501:8501"
     depends_on:
