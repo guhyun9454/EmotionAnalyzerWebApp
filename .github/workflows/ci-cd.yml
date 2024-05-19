@@ -20,10 +20,14 @@ jobs:
       run: echo "${{ secrets.DOCKER_HUB_ACCESS_TOKEN }}" | docker login -u "${{ secrets.DOCKER_HUB_USERNAME }}" --password-stdin
 
     - name: Build Docker image for AI Server
-      run: docker build -t ${{ secrets.DOCKER_HUB_USERNAME }}/microservice_programming:latest ./ai_server
+      run: |
+        docker build -t ${{ secrets.DOCKER_HUB_USERNAME }}/microservice_programming:${{ github.sha }} ./ai_server
+        docker build -t ${{ secrets.DOCKER_HUB_USERNAME }}/microservice_programming:latest ./ai_server
 
     - name: Push Docker image for AI Server
-      run: docker push ${{ secrets.DOCKER_HUB_USERNAME }}/microservice_programming:latest
+      run: |
+        docker push ${{ secrets.DOCKER_HUB_USERNAME }}/microservice_programming:${{ github.sha }}
+        docker push ${{ secrets.DOCKER_HUB_USERNAME }}/microservice_programming:latest
 
   build-and-push-frontend:
     if: contains(github.event.commits[*].modified, 'streamlit_frontend/')
@@ -38,7 +42,11 @@ jobs:
       run: echo "${{ secrets.DOCKER_HUB_ACCESS_TOKEN }}" | docker login -u "${{ secrets.DOCKER_HUB_USERNAME }}" --password-stdin
 
     - name: Build Docker image for Frontend
-      run: docker build -t ${{ secrets.DOCKER_HUB_USERNAME }}/msp_term2_frontend:latest ./streamlit_frontend
+      run: |
+        docker build -t ${{ secrets.DOCKER_HUB_USERNAME }}/msp_term2_frontend:${{ github.sha }} ./streamlit_frontend
+        docker build -t ${{ secrets.DOCKER_HUB_USERNAME }}/msp_term2_frontend:latest ./streamlit_frontend
 
     - name: Push Docker image for Frontend
-      run: docker push ${{ secrets.DOCKER_HUB_USERNAME }}/msp_term2_frontend:latest
+      run: |
+        docker push ${{ secrets.DOCKER_HUB_USERNAME }}/msp_term2_frontend:${{ github.sha }}
+        docker push ${{ secrets.DOCKER_HUB_USERNAME }}/msp_term2_frontend:latest
