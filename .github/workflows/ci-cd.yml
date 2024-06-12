@@ -8,7 +8,6 @@ on:
 
 jobs:
   build-and-push-ai-server:
-    if: contains(github.event.commits[*].modified, 'ai_server/')
     name: Build and Push AI Server Docker Image
     runs-on: ubuntu-latest
 
@@ -30,7 +29,6 @@ jobs:
         docker push ${{ secrets.DOCKER_HUB_USERNAME }}/microservice_programming:latest
 
   build-and-push-frontend:
-    if: contains(github.event.commits[*].modified, 'streamlit_frontend/')
     name: Build and Push Frontend Docker Image
     runs-on: ubuntu-latest
 
