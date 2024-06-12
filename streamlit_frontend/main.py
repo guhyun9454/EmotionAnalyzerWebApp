@@ -15,7 +15,7 @@ if uploaded_file is not None:
     with col1:
         st.image(image, caption='Uploaded Image', use_column_width=True)
 
-    url = 'http://ai-server-service:9454/predict'
+    url = 'http://ai-server-service:9454/predict' #for k8s
 
     files = {'image': uploaded_file.getvalue()}
     response = requests.post(url, files=files)
