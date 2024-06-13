@@ -20,4 +20,4 @@ def predict():
     return send_file(img_byte_arr, mimetype='image/jpeg')
 
 if __name__ == '__main__':
-    app.run(debug=True,port = "30001",host="0.0.0.0")
+    app.run(debug=True,port = "9454",host="0.0.0.0")
