@@ -1,7 +1,7 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: ai-server-service
+  name: ai-server-deployment
 spec:
   replicas: 2 
   selector:
@@ -16,7 +16,7 @@ spec:
       - name: ai-server
         image: guhyun9454/microservice_programming:latest
         ports:
-        - containerPort: 9454
+        - containerPort: 30001
 
 ---
 apiVersion: v1
@@ -28,5 +28,5 @@ spec:
   selector:
     app: ai-server
   ports:
-  - port: 9454
-    targetPort: 9454
+  - port: 30001
+    targetPort: 30001
