@@ -22,6 +22,7 @@ elif selected_image:
     response = requests.get(image_path)
     image = Image.open(BytesIO(response.content))
     # image = Image.open(image_path)
+    print("test image selected")
 
 if image:
     with col1:
